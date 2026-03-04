@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix,ConfusionMatrixDisplay, accuracy_score, precision_score, recall_score, f1_score
 from sklearn.ensemble import RandomForestClassifier
-
+import joblib
 
 
 
@@ -149,3 +149,7 @@ shap_values = explainer.shap_values(X_test_scaled)
 
 plt.title("SHAP")
 shap.summary_plot(shap_values, X_test_scaled, feature_names=X.columns)
+
+joblib.dump(modele_rf,'modele_randomforest.pkl')
+joblib.dump(scaler,'scaler.pkl')
+joblib.dump(X.columns.tolist(), 'model_columns.pkl')
